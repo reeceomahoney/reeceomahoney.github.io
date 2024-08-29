@@ -2,20 +2,81 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 const allPosts = await Astro.glob("./blog/*.md");
 const pageTitle = "Home Page";
+
+allPosts.sort(
+  (a, b) =>
+    new Date(b.frontmatter.date).getTime() -
+    new Date(a.frontmatter.date).getTime()
+);
+
+const contacts = [
+  {
+    label: "Email",
+    name: "reeceo@robots.ox.ac.uk",
+    link: "mailto:reeceo@robots.ox.ac.uk",
+  },
+  {
+    label: "Github",
+    name: "github.com/reeceomahoney",
+    link: "https://github.com/reeceomahoney",
+  },
+  {
+    label: "LinkedIn",
+    name: "linkedin.com/in/reece-omahoney",
+    link: "https://www.linkedin.com/in/reece-omahoney/",
+  },
+];
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <div class="container mx-auto py-4">
-    <h1 class="text-2xl py-4">Projects</h1>
-	<a href="https://arxiv-library.vercel.app/">Arxiv Library</a>
-    <h1 class="text-2xl py-4">Blog</h1>
+    <h1 class="text-4xl font-bold py-8">About me</h1>
+    <p>
+      Hello! I'm Reece. I'm a PhD student at the University of Oxford, where I'm
+      a member of the Oxford Robotics Institute. I'm interested in the
+      intersection of machine learning and robotics, and I'm currently working
+      on applying diffusion models to robotic locomotion. In my spare time I
+      enjoy powerlifting, travelling, and playing chess. Feel free to get in
+      touch with me.
+    </p>
+    <h1 class="text-4xl font-bold py-8">Contacts</h1>
     <ul>
       {
-        allPosts.map((post) => (
-          <li>
-            <a href={post.url}>{post.frontmatter.title}</a>
+        contacts.map((contact) => (
+          <li class="mb-4">
+            <span class="font-bold">{contact.label}</span>
+            <a href={contact.link} class="ml-2 hover:text-blue-500">
+              {contact.name}
+            </a>
           </li>
         ))
+      }
+    </ul>
+    <h1 class="text-4xl font-bold py-8">Projects</h1>
+    <a href="https://arxiv-library.vercel.app/">
+      <span class="font-bold">Arxiv Library</span>
+      <span class="ml-2 hover:text-blue-500">
+        A web app for reading and organizing arXiv papers
+      </span>
+    </a>
+    <h1 class="text-4xl font-bold py-8">Blog</h1>
+    <ul>
+      {
+        allPosts.map((post) => {
+          const date = new Date(post.frontmatter.date)
+            .toISOString()
+            .slice(0, 10);
+          return (
+            <li class="mb-4">
+              <a href={post.url}>
+                <span class="font-bold">{date}</span>
+                <span class="ml-2 hover:text-blue-500">
+                  {post.frontmatter.title}
+                </span>
+              </a>
+            </li>
+          );
+        })
       }
     </ul>
   </div>
