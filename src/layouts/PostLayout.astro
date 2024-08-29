@@ -1,10 +1,13 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 const { frontmatter } = Astro.props;
+const date = new Date(frontmatter.date).toISOString().slice(0, 10);
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
   <div class="container mx-auto py-4 prose">
+    <h1>{frontmatter.title}</h1>
+    <h3>{date}</h3>
     <slot />
   </div>
 </BaseLayout>
