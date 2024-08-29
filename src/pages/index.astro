@@ -1,16 +1,27 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+const allPosts = await Astro.glob("./blog/*.mdx");
+const pageTitle = "Home Page";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout pageTitle={pageTitle}>
+  <header class="border-b-2">
+    <div class="container mx-auto py-4">
+      <a href="/" class="text-4xl font-bold">Reece O'Mahoney</a>
+    </div>
+  </header>
+  <div class="container mx-auto py-4">
+    <h1 class="text-2xl py-4">Projects</h1>
+	<a href="https://arxiv-library.vercel.app/">Arxiv Library</a>
+    <h1 class="text-2xl py-4">Blog</h1>
+    <ul>
+      {
+        allPosts.map((post) => (
+          <li>
+            <a href={post.url}>{post.frontmatter.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>
