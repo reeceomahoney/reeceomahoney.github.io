@@ -1,16 +1,14 @@
 ---
 layout: "../../layouts/PostLayout.astro"
 title: Who we are and what we do
-tag:
+date: 2022-11-30
+tags:
   - Philosophy
   - Technology
-image_base_path: /_posts/quality/
 ---
 
-<figure>
-<img src="{{ page.image_base_path }}church.jpg" style="width: 70%;">
-<figcaption class="figure-caption">Chuch of the Minorities II (1926) - Lyonel Feininger </figcaption>
-</figure>
+![Chuch of the Minorities II (1926) - Lyonel Feininger](../../assets/quality/church.jpg)
+_Chuch of the Minorities II (1926) - Lyonel Feininger_
 
 # Introduction
 
@@ -24,10 +22,8 @@ The thesis of this article is that the root of both of these issues can be trace
 
 # Classical and romantic reality
 
-<figure>
-<img src="{{ page.image_base_path }}pirsig.webp" style="width: 70%;">
-<figcaption class="figure-caption">Robert Pirsig and his son Chris</figcaption>
-</figure>
+![Robert Pirsig and his son Chris](../../assets/quality/pirsig.webp)
+_Robert Pirsig and his son Chris_
 
 Zen and the art of motorcycle maintenance (1974) is a work of literary philosophy by the writer Robert M. Pirsig. It follows the story of the Narrator, his son Chris, and his friends John and Sylvia Sutherland on a motorcycle trip across the American west. The story is punctuated with a series of philosophical 'chautauquas' from the narrator whilst interspersed with the tale of his former self — someone he refers to as phaedrus — his decline into insanity and subsequent change of personality brought about by electric shock therapy. The central idea of the narrator's worldview is called 'Quality', but to better understand this idea and its applicability to the OPS, we need first to explain some of the other key ideas presented throughout the course of Pirsig's chautauquas.
 

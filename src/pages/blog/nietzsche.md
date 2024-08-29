@@ -1,16 +1,14 @@
 ---
 layout: "../../layouts/PostLayout.astro"
 title: Nietzsche's views on the misinterpretation of the life of Christ
-tag:
+date: 2021-04-10
+tags:
   - Philosophy
   - Religion
-image: /_posts/nietzsche/golgotha.jpeg
 ---
 
-<figure>
-<img src="{{ page.image }}">
-<figcaption>Golgotha (1900) - Edvard Munch</figcaption>
-</figure>
+![Golgotha (1900) - Edvard Munch](../../assets/nietzsche/golgotha.jpeg)
+_Golgotha (1900) - Edvard Munch_
 
 Friedrich Nietzsche is commonly viewed as one of history's most outspoken critics of Christianity. A large portion of his writing consists of attacks on its doctrines and expounding his view that a fixation on God has limited humanity from reaching its full potential.
 
