@@ -5,7 +5,7 @@ const date = new Date(frontmatter.date).toISOString().slice(0, 10);
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
-  <div class="container mx-auto py-4 prose">
+  <div class="container mx-auto max-w-2xl py-4 prose">
     <h1>{frontmatter.title}</h1>
     <h3>{date}</h3>
     <slot />
