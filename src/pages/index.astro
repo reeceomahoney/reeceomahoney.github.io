@@ -6,7 +6,7 @@ const pageTitle = "Reece O'Mahoney";
 allPosts.sort(
   (a, b) =>
     new Date(b.frontmatter.date).getTime() -
-    new Date(a.frontmatter.date).getTime()
+    new Date(a.frontmatter.date).getTime(),
 );
 
 const contacts = [
@@ -35,9 +35,9 @@ const contacts = [
       Hello! I'm Reece. I'm a PhD student at the University of Oxford, where I'm
       a member of the Oxford Robotics Institute. I'm interested in the
       intersection of machine learning and robotics, and I'm currently working
-      on applying diffusion models to robotic locomotion and manipulation. In my spare time I
-      enjoy powerlifting, travelling, and playing chess. Feel free to get in
-      touch with me using any of the contacts below.
+      on applying diffusion models to robotic locomotion and manipulation. In my
+      spare time I enjoy powerlifting, travelling, and playing chess. Feel free
+      to get in touch with me using any of the contacts below.
     </p>
     <h1 class="text-4xl font-bold py-8">Contacts</h1>
     <ul>
@@ -53,16 +53,15 @@ const contacts = [
       }
     </ul>
     <h1 class="text-4xl font-bold py-8">Publications</h1>
-      <div class="font-bold">
-        Offline Adaptation of Quadruped Locomotion using Diffusion Models
-      </div>
-      <div>
-        <span class="underline">[Submitted ICRA 2025]</span>
-        <a class="hover:text-blue-500"
-          href="https://arxiv.org/abs/2411.08832">
-          https://arxiv.org/abs/2411.08832
-        </a>
-      </div>
+    <div class="font-bold">
+      Offline Adaptation of Quadruped Locomotion using Diffusion Models
+    </div>
+    <div>
+      <span class="underline">[Submitted ICRA 2025]</span>
+      <a class="hover:text-blue-500" href="https://arxiv.org/abs/2411.08832">
+        https://arxiv.org/abs/2411.08832
+      </a>
+    </div>
     <h1 class="text-4xl font-bold py-8">Projects</h1>
     <a href="https://arxiv-library.vercel.app/">
       <span class="font-bold">Arxiv Library</span>
