@@ -1,0 +1,135 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle =
+  "Offline Adaptation of Quadruped Locomotion using Diffusion Models";
+---
+
+<script src="https://kit.fontawesome.com/f9a65bae7a.js" crossorigin="anonymous"
+></script>
+<BaseLayout pageTitle={pageTitle}>
+  <div class="max-w-3xl mx-auto p-6">
+    <!-- Title Section -->
+    <header class="text-center mb-12">
+      <h1 class="text-6xl font-bold text-gray-800">
+        Offline Adaptation of Quadruped Locomotion using Diffusion Models
+      </h1>
+      <p class="text-lg text-gray-600 mt-4">
+        Reece O’Mahoney, Alexander L. Mitchell, Wanming Yu, Ingmar Posner,
+        Ioannis Havoutis
+      </p>
+      <p class="text-gray-600">
+        Oxford Robotics Institute, University of Oxford
+      </p>
+    </header>
+
+    <!-- Buttons Section -->
+    <div class="flex justify-center gap-4 mb-8">
+      <button
+        class="flex items-center gap-2 px-6 py-2 bg-gray-800 text-white rounded-3xl hover:bg-gray-700"
+      >
+        <img
+          src="public/arxiv-logomark-small.svg"
+          alt="ArXiv logo"
+          class="w-4 h-4 inline"
+        />
+        <a href="https://arxiv.org/abs/2411.08832">Paper</a>
+      </button>
+      <button
+        class="flex items-center gap-2 px-6 py-2 bg-gray-800 text-white rounded-3xl hover:bg-gray-700"
+      >
+        <img
+          src="public/github-mark-white.svg"
+          alt="GitHub logo"
+          class="w-4 h-4 inline"
+        />
+        Code
+      </button>
+    </div>
+
+    <!-- Video Section -->
+    <div>
+      <img
+        src="https://via.placeholder.com/800x600"
+        alt="Simulation image"
+        class="w-full rounded shadow"
+      />
+    </div>
+
+    <p class="text-center text-gray-600 italic">
+      D-Cubed optimises a trajectory for dexterous deformable object
+      manipulation tasks.
+    </p>
+
+    <!-- Abstract Section -->
+    <section class="mt-12">
+      <h2 class="text-4xl font-semibold text-gray-800 mb-4">Abstract</h2>
+      <p class="text-gray-700 leading-relaxed">
+        We present a diffusion-based approach to quadrupedal locomotion that
+        simultaneously addresses the limitations of learning and interpolating
+        between multiple skills (modes) and of offline adapting to new
+        locomotion behaviours after training. This is the first framework to
+        apply classifierfree guided diffusion to quadruped locomotion and
+        demonstrate its efficacy by extracting goal-conditioned behaviour from
+        an originally unlabelled dataset. We show that these capabilities are
+        compatible with a multi-skill policy and can be applied with little
+        modification and minimal compute overhead, i.e., running entirely on the
+        robot’s onboard CPU. We verify the validity of our approach with
+        hardware experiments on the ANYmal quadruped platform.
+      </p>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="mt-12">
+      <h2 class="text-4xl font-semibold text-gray-800 mb-4">Approach</h2>
+      <img src="public/method.png" alt="Approach diagram" class="w-full py-8" />
+      <p class="text-gray-700 leading-relaxed">
+        Method Overview: a) A reinforcement learning agent is pre-trained with a
+        hand crafted policy that generates reference trajectories. These are
+        collected by rolling out the policy in an environment with randomised
+        parameters for robustness. b) An embedding of the observation is
+        concatenated with separate embeddings of the diffusion timestep, skill,
+        and return. These together form the conditioning input. The multi-head
+        transformer decoder initially takes a noise vector as input, applies
+        causal self-attention, then cross-attention with the conditioning and
+        produces a partially denoised vector. This process is repeated N times
+        to produce a complete action trajectory. c) The return value is randomly
+        masked during training, allowing us to use classifier-free guidance at
+        test time. This is done by taking a weighted sum of unconditional and
+        maximum return trajectories at each denoising step.
+      </p>
+    </section>
+
+    <!-- Results Section -->
+    <section class="mt-12">
+      <h2 class="text-4xl font-semibold text-gray-800 mb-4">Results</h2>
+      <img
+        src="public/results_1.png"
+        alt="Approach diagram"
+        class="w-full py-8"
+      />
+      <p>
+        After training, the model’s outputs are adjusted to recover different
+        locomotion behaviours. The table above shows the velocity tracking error
+        of policies trained with different target velocities. We compare an
+        expert model with access to the ground truth commands to our model that
+        has no access to these commands but instead aims to maximise a reward
+        function via classifier-free guidance. Our results demonstrate that our
+        method, without access to ground truth commands, can produce comparable
+        velocity tracking to a model that does by using reward guidance.
+      </p>
+      <img
+        src="public/results_2.png"
+        alt="Approach diagram"
+        class="w-full py-8"
+      />
+      <p class="text-gray-700 leading-relaxed">
+        We collect separate datasets generated by walking and crawling
+        reinforcement learning policies with no transitions present between the
+        two. Our model was able to learn interpolations between these two skills
+        which were remarkably stable over the full range of velocity commands in
+        the dataset. The bottom row of Figure 3 shows snapshots from one of
+        these transitions when deployed on real hardware.
+      </p>
+    </section>
+  </div>
+</BaseLayout>
